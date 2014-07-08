@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+body {
+	font-family: 'Calibri';
+}
+.container:before,
+.container:after {
+  content:"";
+  display:table;
+}
+.container:after {
+  clear:both;
+}
+.container {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+.container.col3 {
+	width: 378px;
+}
+
+.heat {
+	border:1px solid #ccc;
+	clear: both;
+}
+.column {
+	float: left;
+	width: 125px;
+}
+.column .row {
+	height: 20px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<ul>
+	<li>laps : {{ laps }}</li>
+	<li>laps.items: {{ laps.items }}</li>
+	<li>laps: {{ laps }}</li>
+	<li>racer_laps.0: {{ racer_laps.0 }}</li>
+	<li>racer_laps.items: {{ racer_laps.items }}</li>
+	<li>racers: {{ racers }}</li>
+</ul>
+<div class="heat container col{{ column_count }}">
+	<div class="title">HEAT RESULTS: {{ heat.day }}</div>
+	<div class="column index">
+		<div class="header">
+			Heat {{ heat.number }}
+		</div>
+		{% for i in most_laps %}
+		<div class="row">
+			{{ i }}
+		</div>
+		{% endfor %}
+		<div class="row summary">
+			avg
+		</div>
+		<div class="row summary">
+			min
+		</div>
+		<div class="row summary">
+			max
+		</div>
+		<div class="row summary">
+			stddev
+		</div>
+	</div>
+	{% for racer, racer_laps in laps.items %}
+	<div class="column">
+		<div class="header">
+			{{ racer.first_name }}
+		</div>
+		{% for lap in racer_laps %}
+		<div class="row">
+			{{ lap }}
+		</div>
+		{% endfor %}
+	</div>
+	{% endfor %}
+	<div class="summary">
+		
+	<div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if heats %}
+	<ul>
+	{% for heat in heats %}
+		<li><a href="{{ heat.absolute_url }}">{{ heat }}</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	No heats
+{% endif %}
+{% endblock %}
