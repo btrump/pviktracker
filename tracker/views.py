@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from tracker.models import Heat, Lap
+from tracker.models import *
 from django.contrib.auth.models import User
 from datetime import date
 
@@ -15,7 +15,7 @@ def heat_list(request, *args, **kwargs):
 
 def heat_detail(request, *args, **kwargs):
     heat = Heat.objects.get(number=kwargs['heat']) #, day=date(kwargs['year'], kwargs['month'], kwargs['day']))
-    racers = User.objects.filter(pk__in=list(set(Lap.objects.filter(heat=heat).values_list('racer',flat=True))))
+    racers = heat.racers()
     
     laps = dict()
     most_laps = 0
@@ -25,10 +25,10 @@ def heat_detail(request, *args, **kwargs):
         if len(racer_laps) > most_laps:
             most_laps = len(racer_laps)
 
-    instance = {'heat': heat, 'racers': racers, 'laps': laps, 'column_count': len(racers)+1, 'most_laps': xrange(1, most_laps+1)}
+    instance = {'heat': heat, 'racers': racers, 'laps': laps, 'column_count': len(racers)+1, 'most_laps': most_laps, 'most_laps_range': xrange(1, most_laps+1)}
     context = RequestContext(request, instance)
     return render_to_response('heats/detail.html', instance)
-    
+
 #
 # def heat_detail(request, *args, **kwargs):
 #     heat = Heat.objects.get(number=kwargs['heat']) #, day=date(kwargs['year'], kwargs['month'], kwargs['day']))

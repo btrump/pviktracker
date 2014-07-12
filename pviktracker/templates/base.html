@@ -1,12 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css" />
     <title>PVIK{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
 	{% block head %}
 	{% endblock %}
 </head>
-
 <body>
     <div id="sidebar">
         {% block sidebar %}
