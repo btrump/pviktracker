@@ -29,11 +29,11 @@
 	</div>
 	{% for racer, racer_laps in laps.items %}
 	<div class="column">
-		<div class="header">
+		<div class="row header">
 			{{ racer }}
 		</div>
 		{% for lap in racer_laps %}
-		<div class="row">
+		<div class="row lap{% if lap == racer_laps|min %} min{% elif lap == racer_laps|max %} max{% endif %}">
 			{{ lap }}
 		</div>
 		{% if forloop.last and forloop.counter < most_laps %}
