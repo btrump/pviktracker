@@ -1,84 +1,62 @@
 {% extends 'base.html' %}
+{% load heat_helpers %}
 {% block head %}
-<style>
-body {
-	font-family: 'Calibri';
-}
-.container:before,
-.container:after {
-  content:"";
-  display:table;
-}
-.container:after {
-  clear:both;
-}
-.container {
-  zoom:1; /* For IE 6/7 (trigger hasLayout) */
-}
-.container.col3 {
-	width: 378px;
-}
-
-.heat {
-	border:1px solid #ccc;
-	clear: both;
-}
-.column {
-	float: left;
-	width: 125px;
-}
-.column .row {
-	height: 20px;
-}
-</style>
 {% endblock %}
 {% block content %}
-<ul>
-	<li>laps : {{ laps }}</li>
-	<li>laps.items: {{ laps.items }}</li>
-	<li>laps: {{ laps }}</li>
-	<li>racer_laps.0: {{ racer_laps.0 }}</li>
-	<li>racer_laps.items: {{ racer_laps.items }}</li>
-	<li>racers: {{ racers }}</li>
-</ul>
 <div class="heat container col{{ column_count }}">
 	<div class="title">HEAT RESULTS: {{ heat.day }}</div>
 	<div class="column index">
 		<div class="header">
 			Heat {{ heat.number }}
 		</div>
-		{% for i in most_laps %}
+		{% for i in most_laps_range %}
 		<div class="row">
 			{{ i }}
 		</div>
 		{% endfor %}
-		<div class="row summary">
+		<div class="row summary avg">
 			avg
 		</div>
-		<div class="row summary">
+		<div class="row summary min">
 			min
 		</div>
-		<div class="row summary">
+		<div class="row summary max">
 			max
 		</div>
-		<div class="row summary">
+		<div class="row summary stddev">
 			stddev
 		</div>
 	</div>
 	{% for racer, racer_laps in laps.items %}
 	<div class="column">
 		<div class="header">
-			{{ racer.first_name }}
+			{{ racer }}
 		</div>
 		{% for lap in racer_laps %}
 		<div class="row">
 			{{ lap }}
 		</div>
+		{% if forloop.last and forloop.counter < most_laps %}
+		{% for blank in forloop.counter|xrange_tag:most_laps %}
+		<div class="row">
+			-
+		</div>
 		{% endfor %}
+		{% endif %}
+		{% endfor %}
+		<div class="row summary avg">
+			{{ racer_laps|avg }}
+		</div>
+		<div class="row summary min">
+			{{ racer_laps|min }}
+		</div>
+		<div class="row summary max">
+			{{ racer_laps|max }}
+		</div>
+		<div class="row summary stddev">
+			{{ racer_laps|stddev }}
+		</div>
 	</div>
 	{% endfor %}
-	<div class="summary">
-		
-	<div>
 </div>
 {% endblock %}

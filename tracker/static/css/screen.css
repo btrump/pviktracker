@@ -1,0 +1,62 @@
+/* line 7, ../sass/tracker/sass/screen.scss */
+body {
+  font-family: 'Calibri';
+}
+
+/* line 11, ../sass/tracker/sass/screen.scss */
+.heat {
+  border: 1px solid black;
+  padding: 0;
+  clear: both;
+  float: left;
+}
+/* line 16, ../sass/tracker/sass/screen.scss */
+.heat .title {
+  font-weight: bold;
+  background-color: magenta;
+}
+/* line 20, ../sass/tracker/sass/screen.scss */
+.heat .column {
+  float: left;
+  width: 85px;
+}
+/* line 23, ../sass/tracker/sass/screen.scss */
+.heat .column.index {
+  font-weight: bold;
+  width: 65px;
+}
+/* line 26, ../sass/tracker/sass/screen.scss */
+.heat .column.index .header {
+  text-align: left;
+}
+/* line 29, ../sass/tracker/sass/screen.scss */
+.heat .column.index .summary {
+  text-align: left;
+  background-color: white;
+}
+/* line 34, ../sass/tracker/sass/screen.scss */
+.heat .column .header {
+  text-align: center;
+  font-weight: bold;
+  background-color: #cbe8f6;
+}
+/* line 39, ../sass/tracker/sass/screen.scss */
+.heat .column .row {
+  text-align: right;
+  margin: 0;
+}
+/* line 43, ../sass/tracker/sass/screen.scss */
+.heat .column .summary {
+  background-color: #cccccc;
+}
+
+/* line 49, ../sass/tracker/sass/screen.scss */
+#sidebar {
+  float: left;
+  width: 100px;
+}
+
+/* line 53, ../sass/tracker/sass/screen.scss */
+#content {
+  float: left;
+}
