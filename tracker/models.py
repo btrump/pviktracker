@@ -37,4 +37,3 @@ class Lap(models.Model):
 	heat = models.ForeignKey(Heat)
 	number = models.IntegerField(blank=False, null=False)
 	time = models.DecimalField(blank=False, null=False, max_digits=6, decimal_places=3)
-
