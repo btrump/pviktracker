@@ -40,3 +40,12 @@ def stddev(values):
 def xrange_tag(start, end):
     """Returns an xrange from CSV"""
     return xrange(start, end)
+	
+@register.filter(name='value_at')
+def value_at(values, index):
+	"""Returns the dict value at a key"""
+	index = index - 1
+	if index < len(values) and index >= 0:
+		return values[index]
+	else:
+		return None

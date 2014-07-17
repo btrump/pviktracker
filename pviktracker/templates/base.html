@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% block head %}
     <title>PVIK{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static "lib/sb-admin-v2/css/bootstrap.min.css" %}" />
     <link rel="stylesheet" href="{% static "lib/sb-admin-v2/css/sb-admin.css" %}" />
     <link rel="stylesheet" href="{% static "css/screen.css" %}" />
+    <script src="{% static "lib/jquery/jquery.js" %}"></script>
+    <script src="{% static "lib/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js" %}"></script>
     <script src="{% static "lib/sb-admin-v2/js/bootstrap.min.js" %}"></script>
-	{% block head %}
 	{% endblock %}
 </head>
 <body>
