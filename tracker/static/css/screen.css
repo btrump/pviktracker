@@ -4,37 +4,42 @@ body {
 }
 
 /* line 20, ../sass/tracker/sass/screen.scss */
+#content {
+  margin-top: 15px;
+}
+
+/* line 24, ../sass/tracker/sass/screen.scss */
 .heat {
   border: 1px solid black;
   padding: 0;
   clear: both;
   float: left;
 }
-/* line 25, ../sass/tracker/sass/screen.scss */
+/* line 29, ../sass/tracker/sass/screen.scss */
 .heat .title {
   font-weight: bold;
   background-color: magenta;
 }
-/* line 29, ../sass/tracker/sass/screen.scss */
+/* line 33, ../sass/tracker/sass/screen.scss */
 .heat .column {
   float: left;
   width: 75px;
 }
-/* line 32, ../sass/tracker/sass/screen.scss */
+/* line 36, ../sass/tracker/sass/screen.scss */
 .heat .column.index {
   font-weight: bold;
   width: 65px;
 }
-/* line 35, ../sass/tracker/sass/screen.scss */
+/* line 39, ../sass/tracker/sass/screen.scss */
 .heat .column.index .header {
   text-align: left;
 }
-/* line 38, ../sass/tracker/sass/screen.scss */
+/* line 42, ../sass/tracker/sass/screen.scss */
 .heat .column.index .summary {
   text-align: left;
   background-color: white;
 }
-/* line 43, ../sass/tracker/sass/screen.scss */
+/* line 47, ../sass/tracker/sass/screen.scss */
 .heat .column .row {
   padding: 0 5px;
   text-align: right;
@@ -42,7 +47,7 @@ body {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
-/* line 49, ../sass/tracker/sass/screen.scss */
+/* line 53, ../sass/tracker/sass/screen.scss */
 .heat .column .row.header {
   text-align: center;
   font-weight: bold;
@@ -50,7 +55,7 @@ body {
   height: 18px;
   overflow-y: hidden;
 }
-/* line 57, ../sass/tracker/sass/screen.scss */
+/* line 61, ../sass/tracker/sass/screen.scss */
 .heat .column .row.lap.min {
   color: white;
   font-weight: bold;
@@ -58,7 +63,7 @@ body {
   border-top: 1px solid #4fb94c;
   border-bottom: 1px solid #4fb94c;
 }
-/* line 64, ../sass/tracker/sass/screen.scss */
+/* line 68, ../sass/tracker/sass/screen.scss */
 .heat .column .row.lap.max {
   color: white;
   font-weight: bold;
@@ -66,18 +71,18 @@ body {
   border-top: 1px solid #f82a38;
   border-bottom: 1px solid #f82a38;
 }
-/* line 73, ../sass/tracker/sass/screen.scss */
+/* line 77, ../sass/tracker/sass/screen.scss */
 .heat .column .summary {
   background-color: #cccccc;
 }
 
-/* line 79, ../sass/tracker/sass/screen.scss */
+/* line 83, ../sass/tracker/sass/screen.scss */
 #sidebar {
   float: left;
   width: 100px;
 }
 
-/* line 83, ../sass/tracker/sass/screen.scss */
+/* line 87, ../sass/tracker/sass/screen.scss */
 #content {
   float: left;
 }

@@ -3,27 +3,35 @@
 <html lang="en">
 <head>
     <title>PVIK{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "lib/sb-admin-v2/css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "lib/sb-admin-v2/css/sb-admin.css" %}" />
     <link rel="stylesheet" href="{% static "css/screen.css" %}" />
+    <script src="{% static "lib/sb-admin-v2/js/bootstrap.min.js" %}"></script>
 	{% block head %}
 	{% endblock %}
 </head>
 <body>
-    <div id="sidebar">
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">PVIK Heat Tracker v0.1</a>{% block header %}{% endblock %}
+    </div>
+    <div class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
         {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
+        <ul class="nav" id="side-menu">
             <li><a href="/heats/">Heats</a></li>
             <li><a href="/racers/">Racers</a></li>
             <li><a href="/awards/">Awards</a></li>
         </ul>
         {% endblock %}
     </div>
-    <div id="header">
-        {% block header %}Welcome to the PVIK Heat Tracker{% endblock %}
-    </div>
+</nav>
+<div id="page-wrapper">
     <div id="content">
         {% block content %}{% endblock %}
     </div>
+</div>
+</div>
 </body>
 </html>
