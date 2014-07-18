@@ -1,88 +1,39 @@
-$table_header_bg_color: #ff00ff;
-$table_border_color: #000;
-$column_header_bg_color: #cbe8f6;
-$column_min_font_color: #fff;
-$column_min_font_weight: bold;
-$column_min_bg_color: pink;
-$column_min_border_color: #4fb94c;
-$column_min_bg_color: #90e48d;
-$column_max_font_color: #fff;
-$column_max_font_weight: bold;
-$column_max_bg_color: pink;
-$column_max_border_color: #f82a38;
-$column_summary_bg_color: #ccc;
-$column_summary_index_bg_color: #fff;
-
 body {
     font-family: 'Calibri';
+	table {
+		thead {
+			border-bottom: 2px solid grey;
+		}
+		tr {
+			&.odd {
+				background-color:#f9f9f9;
+			}
+		}
+		tfoot {
+			.min, .max, .avg, .stddev {
+				background-color:#c9c9c9;
+				text-align: right;
+			}
+		}
+		.index {
+			font-weight: bold;
+		}
+		.lap {
+			text-align: right;
+		}
+	}
+	@media(min-width:768px) {
+		.navbar-static-side {
+			width: 175px;
+		}
+		#page-wrapper {
+			margin: 0 0 0 175px;
+		}
+	}
 }
 
 #content {
-	margin-top:15px;	
-}
-
-.heat {
-    border: 1px solid $table_border_color;
-	padding: 0;
-    clear: both;
-    float: left;
-	.title {
-		font-weight: bold;
-		background-color: $table_header_bg_color;
-	}
-	.column {
-		float: left;
-		width: 75px;
-		&.index {
-			font-weight: bold;
-			width: 65px;
-			.header {
-				text-align: left;
-			}
-			.summary {
-				text-align: left;
-				background-color: $column_summary_index_bg_color;
-			}
-		}
-		.row {
-			padding: 0 5px;
-			text-align: right;
-			margin: 0;
-			border-top: 1px solid transparent;
-			border-bottom: 1px solid transparent;
-			&.header {
-				text-align: center;
-				font-weight: bold;
-				background-color: $column_header_bg_color;
-				height: 18px;
-				overflow-y: hidden;
-			}
-			&.lap {
-				&.min {
-					color: $column_min_font_color;
-					font-weight: $column_min_font_weight;
-					background-color: $column_min_bg_color;
-					border-top: 1px solid $column_min_border_color;
-					border-bottom: 1px solid $column_min_border_color;
-				}
-				&.max {
-					color: $column_max_font_color;
-					font-weight: $column_max_font_weight;
-					background-color: $column_max_bg_color;
-					border-top: 1px solid $column_max_border_color;
-					border-bottom: 1px solid $column_max_border_color;
-				}
-			}
-		}
-		.summary {
-			background-color: $column_summary_bg_color;
-		}
-	}
-}
-
-#sidebar {
-    float: left;
-    width: 100px;
+	margin-top:15px;
 }
 #content {
     float: left;

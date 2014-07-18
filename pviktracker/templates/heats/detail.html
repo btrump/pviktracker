@@ -1,62 +1,67 @@
 {% extends 'base.html' %}
 {% load heat_helpers %}
-{% block head %}
+{% block extended_head %}
+<script type="text/javascript">
+$(document).ready(function() {
+   $('.dataTable').each(function(){
+       $(this).dataTable();
+   });
+});
+</script>
 {% endblock %}
 {% block content %}
-<div class="heat panel panel-default col{{ column_count }}">
-	<div class="panel-heading">HEAT RESULTS: {{ heat.day }}</div>
-	<div class="column index">
-		<div class="header">
-			Heat {{ heat.number }}
-		</div>
-		{% for i in most_laps_range %}
-		<div class="row">
-			{{ i }}
-		</div>
-		{% endfor %}
-		<div class="row summary avg">
-			avg
-		</div>
-		<div class="row summary min">
-			min
-		</div>
-		<div class="row summary max">
-			max
-		</div>
-		<div class="row summary stddev">
-			stddev
-		</div>
-	</div>
-	{% for racer, racer_laps in laps.items %}
-	<div class="column">
-		<div class="row header">
-			{{ racer }}
-		</div>
-		{% for lap in racer_laps %}
-		<div class="row lap{% if lap == racer_laps|min %} min{% elif lap == racer_laps|max %} max{% endif %}">
-			{{ lap }}
-		</div>
-		{% if forloop.last and forloop.counter < most_laps %}
-		{% for blank in forloop.counter|xrange_tag:most_laps %}
-		<div class="row">
-			-
-		</div>
-		{% endfor %}
-		{% endif %}
-		{% endfor %}
-		<div class="row summary avg">
-			{{ racer_laps|avg }}
-		</div>
-		<div class="row summary min">
-			{{ racer_laps|min }}
-		</div>
-		<div class="row summary max">
-			{{ racer_laps|max }}
-		</div>
-		<div class="row summary stddev">
-			{{ racer_laps|stddev }}
-		</div>
-	</div>
-	{% endfor %}
-</div>
+<table class="table table-bordered table-hover dataTable" id="heat{{ heat.id }}">
+    <thead>
+        <tr role="row">
+            <th class="sorting_asc index" aria-controls="heat{{ heat.id }}">Heat {{ heat.number }}</tH>
+            {% for racer in racers %}
+            <th class="sorting" tabindex="0" aria-controls="heat{{ heat.id }}" rowspan="1" colspan="1">{{ racer }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for lap in most_laps_range %}
+        <tr class="{% cycle 'odd' 'even' %} lap">
+            <td class="index">{{ lap }}</td>
+            {% for racer, racer_laps in laps.items %}
+            <td>{{ racer_laps|value_at:lap }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="index">avg</td>
+            {% for racer, racer_laps in laps.items %}
+            <td class="avg">
+			    {{ racer_laps|avg }}
+            </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="index">min</td>
+            {% for racer, racer_laps in laps.items %}
+            <td class="min">
+			    {{ racer_laps|min }}
+            </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="index">max</td>
+            {% for racer, racer_laps in laps.items %}
+            <td class="max">
+			    {{ racer_laps|max }}
+            </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="index">stddev</td>
+            {% for racer, racer_laps in laps.items %}
+            <td class="stddev">
+			    {{ racer_laps|stddev }}
+            </td>
+            {% endfor %}
+        </tr>
+    </tfoot>
+</table>
 {% endblock %}
