@@ -10,36 +10,38 @@ body table thead {
 body table tr.odd {
   background-color: #f9f9f9;
 }
-/* line 13, ../sass/tracker/sass/screen.scss */
-body table tfoot .min, body table tfoot .max, body table tfoot .avg, body table tfoot .stddev {
+/* line 14, ../sass/tracker/sass/screen.scss */
+body table tfoot tr .min, body table tfoot tr .max, body table tfoot tr .avg, body table tfoot tr .stddev {
   background-color: #c9c9c9;
   text-align: right;
 }
-/* line 18, ../sass/tracker/sass/screen.scss */
+/* line 20, ../sass/tracker/sass/screen.scss */
 body table .index {
   font-weight: bold;
 }
-/* line 21, ../sass/tracker/sass/screen.scss */
+/* line 23, ../sass/tracker/sass/screen.scss */
 body table .lap {
   text-align: right;
 }
 @media (min-width: 768px) {
-  /* line 26, ../sass/tracker/sass/screen.scss */
+  /* line 28, ../sass/tracker/sass/screen.scss */
   body .navbar-static-side {
     width: 175px;
   }
-  /* line 29, ../sass/tracker/sass/screen.scss */
+  /* line 31, ../sass/tracker/sass/screen.scss */
   body #page-wrapper {
     margin: 0 0 0 175px;
   }
 }
 
-/* line 35, ../sass/tracker/sass/screen.scss */
-#content {
-  margin-top: 15px;
-}
-
 /* line 38, ../sass/tracker/sass/screen.scss */
-#content {
+#page-wrapper #header {
+  font-weight: bolder;
+  font-size: 1.2em;
+  margin-left: -10px;
+}
+/* line 43, ../sass/tracker/sass/screen.scss */
+#page-wrapper #content {
+  margin-top: 15px;
   float: left;
 }

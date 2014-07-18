@@ -23,7 +23,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/">PVIK Heat Tracker v0.1</a>{% block header %}{% endblock %}
+        <a class="navbar-brand" href="/">PVIK Heat Tracker v0.1</a>
     </div>
     <div class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
@@ -38,6 +38,9 @@
 </nav>
 <div id="page-wrapper">
     <div id="content">
+        <div id="header">
+            {% block header %}{% endblock %}
+        </div>
         {% block content %}{% endblock %}
     </div>
 </div>

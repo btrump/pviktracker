@@ -4,7 +4,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
    $('.dataTable').each(function(){
-       $(this).dataTable();
+       $(this).dataTable({
+           "searching": false,
+           "pageLength": 30,
+           "paging": false,
+           "info": false,
+           "autoWidth": false
+       });
    });
 });
 </script>

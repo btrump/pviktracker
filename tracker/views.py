@@ -7,6 +7,11 @@ import datetime
 def home(request, *args, **kwargs):
     context = RequestContext(request, kwargs)
     return render_to_response('index.html', context)
+	
+def racers(request, *args, **kwargs):
+	racers = Racer.objects.all().order_by('display_name')
+	context = RequestContext(request, {'racers': racers})
+	return render_to_response('racer/list.html', context)
     
 def heats(request, *args, **kwargs):
 	if kwargs['number']:

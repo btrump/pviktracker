@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load heat_helpers %}
+{% block header %}Racers{% endblock %}
+{% block content %}
+<table class="table table-bordered table-hover dataTable" id="heat{{ heat.id }}">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Best Lap</th>
+            <th>Avg Lap</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for racer in racers %}
+<tr class="{% cycle 'odd' 'even' %}">
+    <td>{{ forloop.counter }}</td>
+    <td>{{ racer }}</td>
+    <td>{{ racer|racer_min }}</td>
+    <td>{{ racer|racer_avg }}</td>
+<tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

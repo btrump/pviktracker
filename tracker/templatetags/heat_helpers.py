@@ -49,3 +49,13 @@ def value_at(values, index):
 		return values[index]
 	else:
 		return ''
+
+@register.filter(name='racer_min')
+def racer_min(racer):
+	laps = racer.lap_set.values_list('time', flat=True)
+	return min(laps)
+	
+@register.filter(name='racer_avg')
+def racer_avg(racer):
+	laps = racer.lap_set.values_list('time', flat=True)
+	return sum(laps)/len(laps)

@@ -10,9 +10,11 @@ body {
 			}
 		}
 		tfoot {
-			.min, .max, .avg, .stddev {
-				background-color:#c9c9c9;
-				text-align: right;
+			tr {
+				.min, .max, .avg, .stddev {
+					background-color:#c9c9c9;
+					text-align: right;
+				}
 			}
 		}
 		.index {
@@ -32,9 +34,14 @@ body {
 	}
 }
 
-#content {
-	margin-top:15px;
-}
-#content {
-    float: left;
+#page-wrapper {
+	#header {
+		font-weight: bolder;
+		font-size: 1.2em;
+		margin-left: -10px;
+	}	
+	#content {
+		margin-top:15px;
+		float: left;
+	}
 }

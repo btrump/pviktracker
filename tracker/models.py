@@ -8,9 +8,15 @@ class Racer(models.Model):
     def __unicode__(self):
         return self.display_name
     
-    def absolute_url(self):
-        return '/heats/%s/%s/%s/%s' % (self.day.year, self.day.month, self.day.day, self.number)
+	def lap_worst(self):
+		return 'another test'
+		
+	def lap_best(self):
+		return '5'
 
+    def absolute_url(self):
+        return 'test'
+		
 class Heat(models.Model):
     day = models.DateField(null=False, blank=False)
     number = models.IntegerField(blank=False, null=False)
