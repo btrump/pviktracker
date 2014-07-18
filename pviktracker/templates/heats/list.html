@@ -1,13 +1,33 @@
 {% extends 'base.html' %}
+{% block extended_head %}
+<script type="text/javascript">
+$(document).ready(function() {
+   $('.dataTable').each(function(){
+       $(this).dataTable({
+           "autoWidth": false
+       });
+   });
+});
+</script>
+{% endblock %}
 {% block header %}Heats{% endblock %}
 {% block content %}
-{% if heats %}
-	<ul>
-	{% for heat in heats %}
-		<li><a href="{{ heat.absolute_url }}">{{ heat }}</li>
-	{% endfor %}
-	</ul>
-{% else %}
-	No heats
-{% endif %}
+<table class="table table-bordered table-hover dataTable" id="heats">
+    <thead>
+        <tr role="row">
+            <th class="sorting_asc index" aria-controls="heat">Date</tH>
+            <th class="sorting" tabindex="0" aria-controls="heats" rowspan="1" colspan="1">Heat #</th>
+            <th class="sorting" tabindex="0" aria-controls="heats" rowspan="1" colspan="1">Racers</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for heat in heats %}
+        <tr class="{% cycle 'odd' 'even' %} lap">
+            <td>{{ heat.day }}</td>
+            <td><a href="{{ heat.absolute_url }}">{{ heat.number }}</a></td>
+            <td>{{ heat.racers|join:", " }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
