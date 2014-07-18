@@ -3,6 +3,5 @@
 [backups]
 *~
 [sass]
-.sass-cache/*
-
+.sass-cache/
 *.scssc
