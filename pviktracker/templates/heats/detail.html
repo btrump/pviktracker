@@ -40,7 +40,7 @@ $(document).ready(function() {
             <td class="index">avg</td>
             {% for racer, racer_laps in laps.items %}
             <td class="avg">
-			    {{ racer_laps|avg }}
+			    {{ racer_laps|avg|time_format }}
             </td>
             {% endfor %}
         </tr>
@@ -64,7 +64,7 @@ $(document).ready(function() {
             <td class="index">stddev</td>
             {% for racer, racer_laps in laps.items %}
             <td class="stddev">
-			    {{ racer_laps|stddev }}
+			    {{ racer_laps|stddev|time_format }}
             </td>
             {% endfor %}
         </tr>

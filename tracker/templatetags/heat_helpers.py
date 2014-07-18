@@ -1,32 +1,22 @@
 from django import template
+import numpy
 
 register = template.Library()
 
 @register.filter(name='avg')
 def avg(values):
     """Returns the average value of a list"""
-    sum = 0.0
-    for item in values:
-        sum = sum + float(item)
-    return sum/len(values)
+    return sum(values, 0)/len(values)
 
 @register.filter(name='max')
-def max(values):
+def list_max(values):
     """Returns the max value of a list"""
-    max = values[0]
-    for item in values:
-        if item > max:
-            max = item
-    return max
+    return max(values)
 
 @register.filter(name='min')
-def min(values):
+def list_min(values):
     """Returns the min value of a list"""
-    min = values.first
-    for item in values:
-        if item < min:
-            min = item
-    return min
+    return min(values)
 
 @register.filter(name='stddev')
 def stddev(values):
@@ -34,7 +24,7 @@ def stddev(values):
     sum = 0.0
     for item in values:
         sum = sum + float(item)
-    return sum/len(values)
+    return numpy.std(values)
 
 @register.filter(name='xrange_tag')
 def xrange_tag(start, end):
@@ -59,3 +49,7 @@ def racer_min(racer):
 def racer_avg(racer):
 	laps = racer.lap_set.values_list('time', flat=True)
 	return sum(laps)/len(laps)
+
+@register.filter(name='time_format')
+def time_format(time):
+	return "{:.3f}".format(time)
