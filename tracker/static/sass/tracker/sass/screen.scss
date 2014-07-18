@@ -9,6 +9,18 @@ body {
 				background-color:#f9f9f9;
 			}
 		}
+		tfoot {
+			.min, .max, .avg, .stddev {
+				background-color:#c9c9c9;
+				text-align: right;
+			}
+		}
+		.index {
+			font-weight: bold;
+		}
+		.lap {
+			text-align: right;
+		}
 	}
 	@media(min-width:768px) {
 		.navbar-static-side {

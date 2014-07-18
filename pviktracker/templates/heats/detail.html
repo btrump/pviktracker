@@ -1,21 +1,28 @@
 {% extends 'base.html' %}
 {% load heat_helpers %}
-{% block title %}
+{% block extended_head %}
+<script type="text/javascript">
+$(document).ready(function() {
+   $('.dataTable').each(function(){
+       $(this).dataTable();
+   });
+});
+</script>
 {% endblock %}
 {% block content %}
-<table class="table table-bordered table-hover dataTable">
+<table class="table table-bordered table-hover dataTable" id="heat{{ heat.id }}">
     <thead>
         <tr role="row">
-            <th class="sorting" aria-controls="dataTables-example">Heat {{ heat.number }}</tH>
+            <th class="sorting_asc index" aria-controls="heat{{ heat.id }}">Heat {{ heat.number }}</tH>
             {% for racer in racers %}
-            <th clss="sorting_asc">{{ racer }}</th>
+            <th class="sorting" tabindex="0" aria-controls="heat{{ heat.id }}" rowspan="1" colspan="1">{{ racer }}</th>
             {% endfor %}
         </tr>
     </thead>
     <tbody>
         {% for lap in most_laps_range %}
-        <tr class="{% cycle 'odd' 'even' %}">
-            <td>{{ lap }}</td>
+        <tr class="{% cycle 'odd' 'even' %} lap">
+            <td class="index">{{ lap }}</td>
             {% for racer, racer_laps in laps.items %}
             <td>{{ racer_laps|value_at:lap }}</td>
             {% endfor %}
@@ -24,7 +31,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td>avg</td>
+            <td class="index">avg</td>
             {% for racer, racer_laps in laps.items %}
             <td class="avg">
 			    {{ racer_laps|avg }}
@@ -32,7 +39,7 @@
             {% endfor %}
         </tr>
         <tr>
-            <td>min</td>
+            <td class="index">min</td>
             {% for racer, racer_laps in laps.items %}
             <td class="min">
 			    {{ racer_laps|min }}
@@ -40,7 +47,7 @@
             {% endfor %}
         </tr>
         <tr>
-            <td>max</td>
+            <td class="index">max</td>
             {% for racer, racer_laps in laps.items %}
             <td class="max">
 			    {{ racer_laps|max }}
@@ -48,7 +55,7 @@
             {% endfor %}
         </tr>
         <tr>
-            <td>stddev</td>
+            <td class="index">stddev</td>
             {% for racer, racer_laps in laps.items %}
             <td class="stddev">
 			    {{ racer_laps|stddev }}

@@ -48,4 +48,4 @@ def value_at(values, index):
 	if index < len(values) and index >= 0:
 		return values[index]
 	else:
-		return None
+		return ''
