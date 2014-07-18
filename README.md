@@ -9,3 +9,4 @@
 + get_absolute_url returning values but other model methods weren't
 + Heat model to calculate all stats
 + Data entry (lap times specifically)
++ graphs
